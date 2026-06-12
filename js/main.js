@@ -166,7 +166,13 @@
     const fallBack = () => heroMotion.classList.add('hero__motion--off');
     heroMotion.addEventListener('error', fallBack, true);
     heroMotion.querySelector('source')?.addEventListener('error', fallBack);
-    if (reducedMotion) {
+    const saveData = navigator.connection && navigator.connection.saveData;
+    if (saveData) {
+      // visitor enabled data-saver: stay on the poster, stop buffering the video
+      heroMotion.removeAttribute('autoplay');
+      $$('source', heroMotion).forEach((source) => source.removeAttribute('src'));
+      heroMotion.load();
+    } else if (reducedMotion) {
       heroMotion.removeAttribute('autoplay');
       heroMotion.pause();
     } else {
