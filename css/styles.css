@@ -1736,3 +1736,51 @@ img, video { max-width: 100%; height: auto; display: block; }
   .chalk-tray { margin: 12px 6px 0; gap: 9px; padding: 0 14px; }
   .tray-eraser { width: 38px; }
 }
+
+/* ============================================================
+   v11 (claude-v11-20260612): 黑板改橫向長方形 + 縮細海報
+   本月之星 ≈ 舊往期大細(細), 往期再細, 露多啲綠板 = 真黑板感
+   ============================================================ */
+
+/* board reads as a wide landscape rectangle */
+.chalkboard__inner {
+  padding: clamp(20px, 3vw, 38px) clamp(22px, 4.2vw, 54px);
+  min-height: 320px;
+  /* slightly brighter classroom green, closer to the reference */
+  background: radial-gradient(135% 105% at 50% 18%, #3f7657 0%, #336a4c 58%, #285740 100%);
+}
+@media (min-width: 860px) {
+  .board-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 30px; }
+}
+
+/* ---- 本月之星: two small cards side by side (≈ old 往期 size) ---- */
+.board-col--stars .stars { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: 460px; }
+.star-card { padding: 10px 10px 12px; border-radius: 10px; }
+.star-card__magnet { top: -8px; width: 16px; height: 16px; margin-left: -8px; }
+.star-card__ribbon { top: 10px; left: -6px; padding: 3px 9px 3px 8px; font-size: 11px; border-radius: 0 4px 4px 0; }
+.star-card__ribbon::after { bottom: -4px; border-width: 2px; }
+.star-card__branch { top: 10px; right: 8px; padding: 3px 9px; font-size: 11px; }
+.star-card figcaption { padding: 9px 4px 0; font-size: 12px; }
+.star-card figcaption strong { font-size: 14px; }
+.star-card figcaption span { font-size: 11px; }
+
+/* ---- 往期佳績: smaller still, pinned by magnets, wrap in a row ---- */
+.board-col--past .past { display: flex; flex-wrap: wrap; gap: 14px 13px; align-content: flex-start; }
+.board-col--past .result-card--sm { flex: 0 0 120px; width: 120px; padding: 7px 7px 9px; border-radius: 8px; }
+.board-col--past .result-card--sm figcaption { padding: 6px 3px 0; font-size: 11px; line-height: 1.35; }
+.board-col--past .result-card--sm figcaption strong { font-size: 11px; }
+/* swap washi tape → small steel magnet to suit a chalkboard */
+.board-col--past .result-card::before {
+  top: -6px; left: 50%;
+  width: 13px; height: 13px;
+  clip-path: none;
+  border-radius: 50%;
+  transform: translateX(-50%) rotate(0deg);
+  background: radial-gradient(circle at 34% 30%, #d7e6f7, #4f7fb5 72%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 560px) {
+  .board-col--stars .stars { gap: 12px; max-width: none; }
+  .board-col--past .result-card--sm { flex-basis: calc(33.333% - 9px); width: auto; }
+}
