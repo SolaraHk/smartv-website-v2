@@ -1872,3 +1872,15 @@ img, video { max-width: 100%; height: auto; display: block; }
 .school-group--secondary .school-list li { background: rgba(246, 201, 87, 0.28); color: var(--sun-deep); }
 .school-list__more { font-weight: 700; background: transparent !important; color: var(--ink-soft) !important; }
 .schools__note { margin: 24px 0 0; font-family: var(--serif); font-weight: 700; color: var(--blue); }
+
+/* ============================================================
+   v14 (claude-v14-20260612): 佳績牆塊牆配返 hero 深 navy，駁色順
+   黑板改為靜態(無入場動畫)，似實淨掛喺牆嘅黑板
+   ============================================================ */
+.chalk-scene {
+  background-color: #0b1d38;
+  background-image:
+    radial-gradient(1000px 540px at 82% -8%, rgba(41, 166, 255, 0.16), transparent 60%),
+    linear-gradient(180deg, #071528 0%, #0c2348 58%, #123a66 135%);
+}
+/* (board is now static — reveal attrs removed in markup; nothing to fade) */
