@@ -83,61 +83,84 @@
     window.addEventListener('resize', syncRuler);
   }
 
-  // Poster lightbox: zoomable posters open full-size so parents can
-  // actually read the results; arrows step through the proof gallery.
+  // Poster lightbox: a swipeable/scrollable gallery so parents can read
+  // the results full-size. On touch you swipe (no tap-spamming buttons);
+  // on desktop the arrows scroll the track. Tapping empty space closes.
   const lightbox = $('#lightbox');
   const zoomables = $$('.zoomable');
   if (lightbox && zoomables.length) {
-    const lbImg = $('#lightboxImg');
+    const track = $('#lightboxTrack');
     const lbCap = $('#lightboxCap');
     const lbClose = $('.lightbox__close', lightbox);
     const lbPrev = $('.lightbox__nav--prev', lightbox);
     const lbNext = $('.lightbox__nav--next', lightbox);
     let group = [];
-    let index = 0;
     let lastFocus = null;
 
-    const render = () => {
-      const trigger = group[index];
-      const source = $('img', trigger);
-      lbImg.src = source.currentSrc || source.src;
-      lbImg.alt = source.alt;
-      const caption = trigger.closest('figure')?.querySelector('figcaption');
-      lbCap.textContent = caption
-        ? Array.from(caption.children).map((el) => el.textContent.trim()).join('｜') || caption.textContent.trim()
-        : source.alt;
+    const captionFor = (trigger) => {
+      const img = $('img', trigger);
+      const cap = trigger.closest('figure')?.querySelector('figcaption');
+      if (!cap) return img ? img.alt : '';
+      const parts = Array.from(cap.children).map((el) => el.textContent.trim()).filter(Boolean);
+      return parts.length ? parts.join('｜') : cap.textContent.trim();
     };
+
+    const currentIndex = () => {
+      const w = track.clientWidth || 1;
+      return Math.max(0, Math.min(group.length - 1, Math.round(track.scrollLeft / w)));
+    };
+    const syncCap = () => { if (group.length) lbCap.textContent = captionFor(group[currentIndex()]); };
 
     const open = (trigger) => {
       const gallery = trigger.dataset.gallery;
       group = gallery ? zoomables.filter((z) => z.dataset.gallery === gallery) : [trigger];
-      index = group.indexOf(trigger);
+      const index = Math.max(0, group.indexOf(trigger));
+      track.innerHTML = '';
+      group.forEach((z) => {
+        const source = $('img', z);
+        const slide = document.createElement('div');
+        slide.className = 'lightbox__slide';
+        const big = document.createElement('img');
+        big.src = source.currentSrc || source.src;
+        big.alt = source.alt;
+        big.draggable = false;
+        slide.appendChild(big);
+        track.appendChild(slide);
+      });
       lastFocus = document.activeElement;
-      render();
       lbPrev.hidden = group.length < 2;
       lbNext.hidden = group.length < 2;
       lightbox.hidden = false;
       document.body.style.overflow = 'hidden';
+      track.scrollLeft = index * track.clientWidth; // jump to clicked poster, no animation
+      syncCap();
       lbClose.focus();
     };
 
     const close = () => {
       lightbox.hidden = true;
+      track.innerHTML = '';
       document.body.style.overflow = '';
       if (lastFocus?.focus) lastFocus.focus();
     };
 
-    const step = (delta) => {
-      index = (index + delta + group.length) % group.length;
-      render();
-    };
+    const step = (delta) => track.scrollBy({ left: delta * track.clientWidth, behavior: 'smooth' });
+
+    let capQueued = false;
+    track.addEventListener('scroll', () => {
+      if (capQueued) return;
+      capQueued = true;
+      requestAnimationFrame(() => { capQueued = false; syncCap(); });
+    }, { passive: true });
 
     zoomables.forEach((z) => z.addEventListener('click', () => open(z)));
     lbClose.addEventListener('click', close);
     lbPrev.addEventListener('click', () => step(-1));
     lbNext.addEventListener('click', () => step(1));
+    // close only when tapping empty space (not the image) — avoids accidental actions
     lightbox.addEventListener('click', (event) => {
-      if (event.target === lightbox) close();
+      const t = event.target;
+      if (t === lightbox || t === track || t.classList.contains('lightbox__slide')) close();
     });
     window.addEventListener('keydown', (event) => {
       if (lightbox.hidden) return;
@@ -145,7 +168,6 @@
       else if (event.key === 'ArrowLeft' && group.length > 1) step(-1);
       else if (event.key === 'ArrowRight' && group.length > 1) step(1);
       else if (event.key === 'Tab') {
-        // keep focus on the dialog controls
         const focusables = [lbClose, lbPrev, lbNext].filter((b) => !b.hidden);
         const current = focusables.indexOf(document.activeElement);
         event.preventDefault();

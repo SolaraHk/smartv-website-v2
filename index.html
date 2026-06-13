@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=claude-v15-20260612" />
+  <link rel="stylesheet" href="css/styles.css?v=claude-v16-20260612" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -177,7 +177,7 @@
       <div class="hero__ambient hero__ambient--cycle" id="heroAmbient" aria-hidden="true">
         <video id="heroMotion" autoplay muted loop playsinline preload="auto"
           poster="assets/motion/results-full-viewport-ultrasmooth-20260610-poster.jpg?v=results-full-viewport-ultrasmooth-v1-20260610" tabindex="-1">
-          <source media="(max-width: 700px)" src="assets/motion/results-full-viewport-mobile-ultrasmooth-20260610.mp4?v=claude-v8-20260612" type="video/mp4" />
+          <source media="(max-width: 700px)" src="assets/motion/results-full-viewport-mobile-ultrasmooth-20260610.mp4?v=claude-v16-20260612" type="video/mp4" />
           <source src="assets/motion/results-full-viewport-ultrasmooth-20260610.mp4?v=claude-v8-20260612" type="video/mp4" />
         </video>
         <div class="hero__veil"></div>
@@ -257,7 +257,7 @@
                     <figcaption><strong>多科佳績合集</strong></figcaption>
                   </figure>
                 </div>
-                <p class="chalk-more">更多學生佳績陸續更新中⋯</p>
+                <a class="chalk-more" href="https://www.instagram.com/smartvlearningcentre" target="_blank" rel="noopener">更多學生佳績持續更新中，按此查看更多 →</a>
               </div>
             </div>
           </div>
@@ -608,14 +608,12 @@
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="圖片放大檢視" hidden>
     <button class="lightbox__close" type="button" aria-label="關閉放大檢視">&times;</button>
     <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="上一張佳績" hidden>&#8249;</button>
-    <figure class="lightbox__stage">
-      <img id="lightboxImg" src="" alt="" />
-      <figcaption id="lightboxCap"></figcaption>
-    </figure>
+    <div class="lightbox__track" id="lightboxTrack"></div>
     <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="下一張佳績" hidden>&#8250;</button>
+    <p class="lightbox__cap" id="lightboxCap"></p>
   </div>
 
-  <script src="js/main.js?v=claude-v8-20260612"></script>
+  <script src="js/main.js?v=claude-v16-20260612"></script>
   <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5c86e9958b044d00b9f5786a67f98691"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
