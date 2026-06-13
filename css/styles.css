@@ -1884,3 +1884,17 @@ img, video { max-width: 100%; height: auto; display: block; }
     linear-gradient(180deg, #071528 0%, #0c2348 58%, #123a66 135%);
 }
 /* (board is now static — reveal attrs removed in markup; nothing to fade) */
+
+/* ============================================================
+   v15 (claude-v15-20260612): 佳績牆改淺色背景(光猛、襯返品牌)
+   綠黑板喺白底上更乾淨突出；CTA 文字轉深色
+   ============================================================ */
+.chalk-scene {
+  color: var(--ink);
+  background-color: #eaf1fb;
+  background-image:
+    radial-gradient(900px 480px at 84% -10%, rgba(41, 166, 255, 0.12), transparent 62%),
+    linear-gradient(180deg, #f6faff 0%, #e6eff9 100%);
+}
+.chalk-scene .proof__cta { border-top-color: var(--line); }
+.chalk-scene .proof__cta p { color: var(--ink); text-shadow: none; }
