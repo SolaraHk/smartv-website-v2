@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=claude-v9-20260612" />
+  <link rel="stylesheet" href="css/styles.css?v=claude-v10-20260612" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -206,59 +206,67 @@
       <a class="hero__cue" href="#proof" aria-label="向下瀏覽學生佳績"><span></span></a>
     </section>
 
-    <!-- 2. Proof — whiteboard with 本月之星 -->
-    <section class="section proof" id="proof">
+    <!-- 2. Proof — classroom chalkboard 佳績牆 -->
+    <section class="section proof chalk-scene" id="proof" aria-labelledby="proofTitle">
       <div class="container">
-        <header class="section__head" data-reveal>
-          <p class="kicker kicker--light">學生佳績</p>
-          <h2 class="section__title">成績，<em class="mark">由實績說話</em>。</h2>
-          <p class="section__lead">英文默書 100 分、中英數第三學段考試接近滿分。學生的進步紀錄於社交平台持續更新，每一張均為真實佳績。</p>
-        </header>
+        <p class="sr-only">學生佳績</p>
+        <div class="chalkboard" data-reveal>
+          <div class="chalkboard__inner">
+            <h2 id="proofTitle" class="chalk-title">佳績牆</h2>
+            <p class="chalk-sub">英文默書 100 分・中英數第三學段考試接近滿分 — 每一張均為真實學生佳績，並於社交平台持續更新。</p>
 
-        <div class="board" data-reveal>
-          <div class="board__head">
-            <span class="board__title">本月之星</span>
-            <span class="board__sub">天后 × 坑口・每月更新</span>
+            <div class="board-grid">
+              <div class="board-col board-col--stars">
+                <p class="chalk-label">★ 本月之星</p>
+                <div class="stars" data-reveal-group>
+                  <figure class="star-card" data-reveal-item>
+                    <span class="star-card__magnet" aria-hidden="true"></span>
+                    <span class="star-card__ribbon">★ 本月之星</span>
+                    <span class="chip chip--blue star-card__branch">天后分校</span>
+                    <button class="zoomable" type="button" data-gallery="proof" aria-label="放大檢視：天后分校本月之星，P6 第三學段中英數接近滿分">
+                      <img src="assets/v2/proof-latest.jpg?v=claude-v10-20260612" alt="天后分校本月之星：P6 學生第三學段考試中英數三科接近滿分佳績海報" loading="lazy" width="720" height="900" />
+                    </button>
+                    <figcaption><strong>P6・第三學段考試</strong><span>中・英・數三科接近滿分</span></figcaption>
+                  </figure>
+                  <figure class="star-card" data-reveal-item>
+                    <span class="star-card__magnet" aria-hidden="true"></span>
+                    <span class="star-card__ribbon">★ 本月之星</span>
+                    <span class="chip chip--sun star-card__branch">坑口分校</span>
+                    <button class="zoomable" type="button" data-gallery="proof" aria-label="放大檢視：坑口分校本月之星，英文默書 100 分">
+                      <img src="assets/v2/proof-dictation.jpg?v=claude-v10-20260612" alt="坑口分校本月之星：學生英文默書一百分佳績海報" loading="lazy" width="640" height="800" />
+                    </button>
+                    <figcaption><strong>英文默書 100 分</strong><span>小班貼身跟進串字弱點</span></figcaption>
+                  </figure>
+                </div>
+              </div>
+
+              <div class="board-col board-col--past">
+                <p class="chalk-label">往期佳績</p>
+                <div class="past" data-reveal-group>
+                  <figure class="result-card result-card--sm" data-reveal-item>
+                    <button class="zoomable" type="button" data-gallery="proof" aria-label="放大檢視：中英數佳績合集">
+                      <img src="assets/v2/proof-triple.jpg?v=claude-v10-20260612" alt="學生中英數佳績合集海報" loading="lazy" width="640" height="800" />
+                    </button>
+                    <figcaption><strong>考試成績穩步提升</strong></figcaption>
+                  </figure>
+                  <figure class="result-card result-card--sm" data-reveal-item>
+                    <button class="zoomable" type="button" data-gallery="proof" aria-label="放大檢視：多科佳績合集">
+                      <img src="assets/v2/results-collection.jpg?v=claude-v10-20260612" alt="智成教育中心學生佳績合集海報：常識科100分、數學科94分、中文閱讀98.5分等真實成績" loading="lazy" width="723" height="997" />
+                    </button>
+                    <figcaption><strong>多科佳績合集</strong></figcaption>
+                  </figure>
+                </div>
+                <p class="chalk-more">更多學生佳績陸續更新中⋯</p>
+              </div>
+            </div>
           </div>
 
-          <div class="stars" data-reveal-group>
-            <figure class="star-card" data-reveal-item>
-              <span class="star-card__magnet" aria-hidden="true"></span>
-              <span class="star-card__ribbon">★ 本月之星</span>
-              <span class="chip chip--blue star-card__branch">天后分校</span>
-              <button class="zoomable" type="button" data-gallery="proof" aria-label="放大檢視：天后分校本月之星，P6 第三學段中英數接近滿分">
-                <img src="assets/v2/proof-latest.jpg?v=claude-v9-20260612" alt="天后分校本月之星：P6 學生第三學段考試中英數三科接近滿分佳績海報" loading="lazy" width="720" height="900" />
-              </button>
-              <figcaption><strong>P6・第三學段考試</strong><span>中・英・數三科接近滿分</span></figcaption>
-            </figure>
-            <figure class="star-card" data-reveal-item>
-              <span class="star-card__magnet" aria-hidden="true"></span>
-              <span class="star-card__ribbon">★ 本月之星</span>
-              <span class="chip chip--sun star-card__branch">坑口分校</span>
-              <button class="zoomable" type="button" data-gallery="proof" aria-label="放大檢視：坑口分校本月之星，英文默書 100 分">
-                <img src="assets/v2/proof-dictation.jpg?v=claude-v9-20260612" alt="坑口分校本月之星：學生英文默書一百分佳績海報" loading="lazy" width="640" height="800" />
-              </button>
-              <figcaption><strong>英文默書 100 分</strong><span>小班貼身跟進串字弱點</span></figcaption>
-            </figure>
+          <div class="chalk-tray" aria-hidden="true">
+            <span class="tray-eraser"></span>
+            <span class="tray-chalk tray-chalk--w"></span>
+            <span class="tray-chalk tray-chalk--y"></span>
+            <span class="tray-chalk tray-chalk--w"></span>
           </div>
-
-          <p class="board__divider"><span>往期佳績</span></p>
-
-          <div class="past" data-reveal-group>
-            <figure class="result-card result-card--sm" data-reveal-item>
-              <button class="zoomable" type="button" data-gallery="proof" aria-label="放大檢視：中英數佳績合集">
-                <img src="assets/v2/proof-triple.jpg?v=claude-v9-20260612" alt="學生中英數佳績合集海報" loading="lazy" width="640" height="800" />
-              </button>
-              <figcaption><strong>考試成績穩步提升</strong></figcaption>
-            </figure>
-            <figure class="result-card result-card--sm" data-reveal-item>
-              <button class="zoomable" type="button" data-gallery="proof" aria-label="放大檢視：多科佳績合集">
-                <img src="assets/v2/results-collection.jpg?v=claude-v9-20260612" alt="智成教育中心學生佳績合集海報：常識科100分、數學科94分、中文閱讀98.5分等真實成績" loading="lazy" width="723" height="997" />
-              </button>
-              <figcaption><strong>多科佳績合集</strong></figcaption>
-            </figure>
-          </div>
-          <p class="board__more">更多學生佳績陸續更新中</p>
         </div>
 
         <div class="proof__cta" data-reveal>

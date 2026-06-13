@@ -1595,3 +1595,144 @@ img, video { max-width: 100%; height: auto; display: block; }
 @media (prefers-reduced-motion: reduce) {
   .faq__item summary::after { transition: none; }
 }
+
+/* ============================================================
+   v10 (claude-v10-20260612): 課室黑板「佳績牆」
+   木牆背景 + 木框綠板 + 粉筆槽 · 左本月之星 / 右往期佳績
+   ============================================================ */
+
+/* ---------- Wooden-wall scene ---------- */
+.chalk-scene {
+  position: relative;
+  color: #fff;
+  background-color: #bf7536;
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,0.20), rgba(0,0,0,0) 9%, rgba(0,0,0,0) 91%, rgba(0,0,0,0.24)),
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.14) 0 1px, rgba(0,0,0,0) 1px 56px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 1px, rgba(0,0,0,0) 1px 56px),
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.035) 0 3px, rgba(255,255,255,0.02) 3px 6px),
+    linear-gradient(90deg, #c67c3c, #b96f31);
+}
+.chalk-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(120% 80% at 50% 38%, transparent 52%, rgba(0,0,0,0.30));
+}
+.chalk-scene > .container { position: relative; z-index: 1; }
+
+/* ---------- Chalkboard (wooden frame + green board) ---------- */
+.chalkboard {
+  position: relative;
+  margin: 4px auto 0;
+  padding: 18px;
+  border-radius: 12px;
+  background: linear-gradient(150deg, #8a572c, #5a3517);
+  box-shadow:
+    inset 0 2px 1px rgba(255,255,255,0.28),
+    inset 0 -4px 7px rgba(0,0,0,0.45),
+    0 28px 58px -26px rgba(0,0,0,0.72);
+}
+.chalkboard__inner {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(22px, 3.6vw, 48px);
+  border-radius: 5px;
+  background: radial-gradient(135% 100% at 50% 20%, #3c6e52 0%, #2f5742 58%, #234735 100%);
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,0.38), inset 0 8px 28px rgba(0,0,0,0.38);
+}
+.chalkboard__inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(52% 30% at 26% 16%, rgba(255,255,255,0.07), transparent 70%),
+    radial-gradient(42% 26% at 82% 88%, rgba(255,255,255,0.05), transparent 70%);
+}
+
+/* ---------- Chalk lettering ---------- */
+.chalk-title {
+  position: relative;
+  display: inline-block;
+  margin: 0 0 8px;
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(32px, 6.4vw, 54px);
+  letter-spacing: 0.08em;
+  color: #f3efe3;
+  text-shadow: 0 0 1px rgba(255,255,255,0.55), 0 2px 12px rgba(255,255,255,0.14);
+}
+.chalk-title::after {
+  content: "";
+  position: absolute;
+  left: -2%; right: -2%; bottom: -8px;
+  height: 4px;
+  border-radius: 3px;
+  background: rgba(243,239,227,0.82);
+  box-shadow: 0 0 5px rgba(255,255,255,0.32);
+  transform: rotate(-0.7deg);
+}
+.chalk-sub {
+  max-width: 60ch;
+  margin: 14px 0 28px;
+  color: rgba(243,239,227,0.82);
+  font-size: clamp(14px, 1.6vw, 16px);
+  line-height: 1.7;
+}
+.chalk-label {
+  margin: 0 0 16px;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(18px, 2.4vw, 22px);
+  color: #f3efe3;
+  letter-spacing: 0.03em;
+  text-shadow: 0 1px 9px rgba(255,255,255,0.14);
+}
+.chalk-more {
+  margin: 16px 0 0;
+  font-size: 13px;
+  color: rgba(243,239,227,0.66);
+}
+
+/* ---------- Left stars / right past layout ---------- */
+.board-grid { display: grid; gap: 26px; }
+@media (min-width: 860px) {
+  .board-grid { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 34px; align-items: start; }
+}
+.board-col--stars .stars { grid-template-columns: 1fr; gap: 20px; }
+.board-col--past .past { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+
+/* ---------- Chalk tray with chalk + eraser ---------- */
+.chalk-tray {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 14px 12px 0;
+  padding: 0 22px;
+  height: 17px;
+  border-radius: 0 0 8px 8px;
+  background: linear-gradient(180deg, #946539 0%, #6f4524 62%, #58361a 100%);
+  box-shadow: 0 11px 18px -9px rgba(0,0,0,0.6), inset 0 2px 0 rgba(255,255,255,0.20);
+}
+.tray-eraser {
+  width: 48px; height: 12px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #3a414d, #222732);
+  box-shadow: inset 0 4px 0 #e7d4ac, 0 1px 2px rgba(0,0,0,0.4);
+}
+.tray-chalk { height: 7px; border-radius: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.35); }
+.tray-chalk--w { width: 44px; background: #f3efe3; }
+.tray-chalk--y { width: 32px; background: #f6d96b; }
+
+/* CTA legibility on wood */
+.chalk-scene .proof__cta { border-top-color: rgba(0,0,0,0.22); margin-top: 30px; }
+.chalk-scene .proof__cta p { text-shadow: 0 1px 3px rgba(0,0,0,0.45); }
+
+@media (max-width: 560px) {
+  .chalkboard { padding: 12px; }
+  .chalk-tray { margin: 12px 6px 0; gap: 9px; padding: 0 14px; }
+  .tray-eraser { width: 38px; }
+}
