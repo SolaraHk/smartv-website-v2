@@ -1784,3 +1784,44 @@ img, video { max-width: 100%; height: auto; display: block; }
   .board-col--stars .stars { gap: 12px; max-width: none; }
   .board-col--past .result-card--sm { flex-basis: calc(33.333% - 9px); width: auto; }
 }
+
+/* ============================================================
+   v12 (claude-v12-20260612): 黑板上 Smart V 藍色品牌牆
+   去走啡色木牆 → 品牌藍 · 深胡桃木框 · 卡大返少少
+   Title 置中(黑板概念) · 移除標題下描述
+   ============================================================ */
+
+/* brand-blue wall instead of orange wood */
+.chalk-scene {
+  background-color: var(--blue-deep);
+  background-image:
+    radial-gradient(900px 480px at 85% -12%, rgba(41, 166, 255, 0.30), transparent 64%),
+    linear-gradient(180deg, var(--blue-deep), var(--blue) 135%);
+}
+.chalk-scene::before { display: none; }
+
+/* deeper walnut frame + tray so it reads premium on blue (not "weird orange") */
+.chalkboard { background: linear-gradient(150deg, #5f3f22, #38220f); }
+.chalk-tray { background: linear-gradient(180deg, #6a4626 0%, #4a2e16 62%, #381f0d 100%); }
+
+/* centred chalk title, no description — classic blackboard heading */
+.chalkboard__inner { text-align: center; }
+.board-grid { text-align: left; margin-top: 4px; grid-template-columns: 1fr; }
+@media (min-width: 860px) { .board-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 34px; } }
+.chalk-title { margin: 0 0 24px; }
+
+/* a little bigger again (between v10 and v11) */
+.board-col--stars .stars { max-width: none; gap: 18px; }
+.star-card__ribbon { font-size: 12px; padding: 4px 10px 4px 9px; }
+.star-card__branch { font-size: 12px; padding: 3px 10px; }
+.star-card figcaption { padding: 10px 5px 0; font-size: 13px; }
+.star-card figcaption strong { font-size: 15px; }
+.star-card figcaption span { font-size: 12px; }
+.board-col--past .past { gap: 16px 15px; }
+.board-col--past .result-card--sm { flex: 0 0 146px; width: 146px; padding: 8px 8px 10px; }
+.board-col--past .result-card--sm figcaption { font-size: 12px; }
+.board-col--past .result-card--sm figcaption strong { font-size: 12px; }
+
+@media (max-width: 560px) {
+  .board-col--past .result-card--sm { flex-basis: calc(50% - 8px); width: auto; }
+}
