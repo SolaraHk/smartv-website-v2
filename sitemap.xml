@@ -1,9 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://smartv.inexadesk.com/</loc>
-    <lastmod>2026-06-12</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://smartv.hk/</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://smartv.hk/assets/motion/results-full-viewport-ultrasmooth-20260610-poster.jpg</image:loc>
+      <image:title>Smart V 智成教育中心學生佳績影片封面</image:title>
+      <image:caption>天后及坑口補習社 Smart V 學生佳績與小班學習成果</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://smartv.hk/assets/logo-web.webp</image:loc>
+      <image:title>Smart V Learning Centre 標誌</image:title>
+      <image:caption>Smart V 智成教育中心品牌標誌</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://smartv.hk/assets/v2/proof-latest.jpg</image:loc>
+      <image:title>天后分校 P6 中英數接近滿分佳績</image:title>
+      <image:caption>天后分校學生第三學段考試中英數三科接近滿分</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://smartv.hk/assets/v2/proof-dictation.jpg</image:loc>
+      <image:title>坑口分校英文默書 100 分佳績</image:title>
+      <image:caption>坑口分校學生英文默書一百分</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://smartv.hk/assets/v2/proof-triple.jpg</image:loc>
+      <image:title>Smart V 中英數佳績合集</image:title>
+      <image:caption>學生中英數多科佳績合集</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://smartv.hk/assets/v2/results-collection.jpg</image:loc>
+      <image:title>Smart V 學生成績合集</image:title>
+      <image:caption>常識科100分、數學科94分、中文閱讀98.5分等真實成績</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://smartv.hk/assets/reviews/review-math48.jpg</image:loc>
+      <image:title>家長回饋：數學小測 48/50</image:title>
+      <image:caption>小二學生數學小測 48/50 並取得全級最高分</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://smartv.hk/assets/reviews/review-math98.jpg</image:loc>
+      <image:title>家長回饋：數學 98 分</image:title>
+      <image:caption>學生數學考獲 98 分的家長 WhatsApp 回饋</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://smartv.hk/assets/reviews/review-attitude.jpg</image:loc>
+      <image:title>家長回饋：學習態度進步</image:title>
+      <image:caption>學生由抗拒到主動做功課的家長回饋</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://smartv.hk/assets/reviews/review-chinese87.jpg</image:loc>
+      <image:title>家長回饋：中文 87 分及數學合格</image:title>
+      <image:caption>小一學生中文 87 分及數學由不合格到合格</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://smartv.hk/assets/v2/early-years.jpg</image:loc>
+      <image:title>幼兒班及升小預備班課程海報</image:title>
+      <image:caption>K1 至 K3 幼兒班及升小預備班課程資訊</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://smartv.hk/assets/v2/summer-camp.jpg</image:loc>
+      <image:title>2026 暑期日營課程海報</image:title>
+      <image:caption>Smart V 2026 暑期日營、興趣及學術課程資訊</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://smartv.hk/assets/v2/new-shops.jpg</image:loc>
+      <image:title>坑口分校雙舖環境</image:title>
+      <image:caption>Smart V 智成教育中心坑口分校雙舖環境</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://smartv.hk/llms.txt</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

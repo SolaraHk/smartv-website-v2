@@ -1,1 +1,30 @@
 .DS_Store
+
+# Local secrets / auth / deployment cache
+.env
+.env.*
+!.env.example
+.wrangler/
+*.pem
+*.p12
+*.key
+*.token
+*auth*.json
+*secret*.json
+
+# Local QA / generated reports (keep off public GitHub)
+reports/
+test-results/
+playwright-report/
+coverage/
+.cache/
+
+# Backups / logs
+*.bak
+*.bak-*
+*.log
+
+# Dependency/build folders if introduced later
+node_modules/
+dist/
+build/

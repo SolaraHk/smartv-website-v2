@@ -63,6 +63,32 @@
     window.addEventListener('scroll', syncFab, { passive: true });
   }
 
+  // Low-end phone guardrail: below-fold proof/review photos start as a 1px
+  // placeholder and hydrate only near viewport. This keeps first paint light,
+  // while noscript / JS-off still has readable copy and layout.
+  const lazyImages = $$('img[data-src]');
+  const hydrateImage = (img) => {
+    if (!img || img.dataset.loaded === 'true') return;
+    const src = img.dataset.src;
+    if (!src) return;
+    img.src = src;
+    img.dataset.loaded = 'true';
+  };
+  if (lazyImages.length) {
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          hydrateImage(entry.target);
+          imageObserver.unobserve(entry.target);
+        });
+      }, { rootMargin: '560px 0px', threshold: 0.01 });
+      lazyImages.forEach((img) => imageObserver.observe(img));
+    } else {
+      lazyImages.forEach(hydrateImage);
+    }
+  }
+
   // Ruler progress bar: mirrors reading position under the docked nav.
   const ruler = $('#navRuler');
   if (ruler) {
@@ -121,7 +147,8 @@
         const slide = document.createElement('div');
         slide.className = 'lightbox__slide';
         const big = document.createElement('img');
-        big.src = source.currentSrc || source.src;
+        hydrateImage(source);
+        big.src = source.dataset.src || source.currentSrc || source.src;
         big.alt = source.alt;
         big.draggable = false;
         slide.appendChild(big);
@@ -181,24 +208,58 @@
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Full-screen hero video: keep the poster visible if playback fails,
-  // and stay on the poster frame when the visitor prefers reduced motion.
+  // Full-screen hero motion:
+  // first paint uses the lightweight poster, then the muted MP4 is attached
+  // immediately after first paint on both desktop and mobile. Data-saver / 2G
+  // users and reduced-motion users keep the static poster.
   const heroMotion = $('#heroMotion');
   if (heroMotion) {
-    const fallBack = () => heroMotion.classList.add('hero__motion--off');
-    heroMotion.addEventListener('error', fallBack, true);
-    heroMotion.querySelector('source')?.addEventListener('error', fallBack);
-    const saveData = navigator.connection && navigator.connection.saveData;
-    if (saveData) {
-      // visitor enabled data-saver: stay on the poster, stop buffering the video
-      heroMotion.removeAttribute('autoplay');
-      $$('source', heroMotion).forEach((source) => source.removeAttribute('src'));
+    const ambient = heroMotion.closest('.hero__ambient');
+    const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    const networkWeak = Boolean(conn && (conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '')));
+    const sources = $$('source[data-src]', heroMotion);
+    let activated = false;
+
+    const fallBack = () => {
+      heroMotion.classList.add('hero__motion--off');
+      ambient?.classList.remove('is-video-ready');
+    };
+
+    const markReady = () => {
+      heroMotion.classList.remove('hero__motion--off');
+      ambient?.classList.add('is-video-ready');
+    };
+
+    const activateVideo = () => {
+      if (activated || reducedMotion || networkWeak || !sources.length) return;
+      activated = true;
+      heroMotion.muted = true;
+      heroMotion.autoplay = true;
+      sources.forEach((source) => {
+        if (!source.src) source.src = source.dataset.src;
+      });
       heroMotion.load();
-    } else if (reducedMotion) {
-      heroMotion.removeAttribute('autoplay');
-      heroMotion.pause();
+      heroMotion.play()
+        .then(markReady)
+        .catch(() => {
+          // Some mobile browsers still want a user activation even for muted
+          // background video. Keep the poster visible, then retry on intent.
+          activated = false;
+        });
+    };
+
+    heroMotion.addEventListener('canplay', markReady, { once: true });
+    heroMotion.addEventListener('playing', markReady, { once: true });
+    heroMotion.addEventListener('error', fallBack, true);
+    sources.forEach((source) => source.addEventListener('error', fallBack));
+
+    if (reducedMotion || networkWeak) {
+      fallBack();
     } else {
-      heroMotion.play().catch(() => {});
+      window.setTimeout(activateVideo, 350);
+      ['pointerdown', 'touchstart', 'keydown'].forEach((eventName) => {
+        window.addEventListener(eventName, activateVideo, { once: true, passive: true });
+      });
     }
   }
 
