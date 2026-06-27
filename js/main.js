@@ -9,6 +9,23 @@
   const year = $('#year');
   if (year) year.textContent = new Date().getFullYear();
 
+  $$('.js-email-link').forEach((link) => {
+    const user = link.dataset.user;
+    const domain = link.dataset.domain;
+    if (!user || !domain) return;
+    const email = `${user}@${domain}`;
+    link.href = `mailto:${email}`;
+    link.textContent = email;
+  });
+
+  $$('.js-wa-link').forEach((link) => {
+    const phone = link.dataset.phone;
+    if (!phone) return;
+    const text = link.dataset.text;
+    const query = text ? `?text=${encodeURIComponent(text)}` : '';
+    link.href = `https://wa.me/${phone}${query}`;
+  });
+
   const nav = $('#nav');
   const syncNav = () => nav?.classList.toggle('scrolled', window.scrollY > 20);
   syncNav();

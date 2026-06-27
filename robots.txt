@@ -1,27 +1,27 @@
-# Smart V crawler policy
-# ai-search/citation retrieval: allowed
-# ai-train/model-training crawlers: disallowed
+# Smart V AI / search crawler policy
+# ai-search / citation retrieval: allowed
+# ai-train / model-training crawlers: disallowed
 
+# --- AI answer / citation engines (ALLOW) ---
 User-agent: OAI-SearchBot
 Allow: /
-Allow: /llms.txt
 
 User-agent: PerplexityBot
 Allow: /
-Allow: /llms.txt
 
 User-agent: Claude-SearchBot
 Allow: /
-Allow: /llms.txt
 
 User-agent: Claude-User
 Allow: /
-Allow: /llms.txt
 
 User-agent: Googlebot
 Allow: /
-Allow: /llms.txt
 
+User-agent: Bingbot
+Allow: /
+
+# --- Model-training crawlers (DISALLOW) ---
 User-agent: GPTBot
 Disallow: /
 
@@ -31,13 +31,24 @@ Disallow: /
 User-agent: ClaudeBot
 Disallow: /
 
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+User-agent: PerplexityBot-Train
+Disallow: /
+
+# --- Default ---
 User-agent: *
 Allow: /
-Allow: /llms.txt
-Allow: /sitemap.xml
-Allow: /assets/
-Allow: /css/
-Allow: /js/
 
 Sitemap: https://smartv.hk/sitemap.xml
 # LLM reference: https://smartv.hk/llms.txt

@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://smartv.hk/</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -71,11 +71,62 @@
       <image:title>坑口分校雙舖環境</image:title>
       <image:caption>Smart V 智成教育中心坑口分校雙舖環境</image:caption>
     </image:image>
+    <image:image>
+      <image:loc>https://smartv.hk/assets/references/smartv-reference-photo-02-background-crop.jpg</image:loc>
+      <image:title>Smart V 官方品牌插畫</image:title>
+      <image:caption>戴四方帽學生與鋼琴、圖書、畫筆及校舍品牌插畫</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://smartv.hk/assets/reviews/review-chinese-progress28.jpg</image:loc>
+      <image:title>家長回饋：中文閱讀進步 28 分</image:title>
+      <image:caption>小一中文閱讀由 60.5 升至 88.5 分</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://smartv.hk/assets/reviews/review-piano.jpg</image:loc>
+      <image:title>家長回饋：鋼琴持續進步</image:title>
+      <image:caption>學生鋼琴課持續進步的家長回饋</image:caption>
+    </image:image>
   </url>
   <url>
-    <loc>https://smartv.hk/llms.txt</loc>
-    <lastmod>2026-06-17</lastmod>
+    <loc>https://smartv.hk/tin-hau/</loc>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://smartv.hk/assets/motion/results-full-viewport-ultrasmooth-20260610-poster.jpg</image:loc>
+      <image:title>Smart V 智成教育中心天后分校學生佳績</image:title>
+      <image:caption>天后、炮台山、北角一帶 1:4 小班功課輔導及中英數專科</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://smartv.hk/assets/v2/proof-latest.jpg</image:loc>
+      <image:title>天后分校學生佳績</image:title>
+      <image:caption>Smart V 天后分校 P6 中英數接近滿分佳績</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://smartv.hk/assets/v2/results-collection.jpg</image:loc>
+      <image:title>Smart V 天后分校學生成績合集</image:title>
+      <image:caption>天后分校學生中英數常多科佳績合集</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://smartv.hk/hang-hau/</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://smartv.hk/assets/v2/new-shops.jpg</image:loc>
+      <image:title>Smart V 智成教育中心坑口分校環境</image:title>
+      <image:caption>坑口、將軍澳、寶琳一帶 1:4 小班功課輔導及中英數專科</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://smartv.hk/assets/v2/proof-dictation.jpg</image:loc>
+      <image:title>坑口分校英文默書 100 分佳績</image:title>
+      <image:caption>Smart V 坑口分校學生英文默書一百分</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://smartv.hk/assets/v2/results-collection.jpg</image:loc>
+      <image:title>Smart V 坑口分校學生成績合集</image:title>
+      <image:caption>坑口分校學生中英數常多科佳績合集</image:caption>
+    </image:image>
   </url>
 </urlset>

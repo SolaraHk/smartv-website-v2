@@ -2145,6 +2145,59 @@ img, video { max-width: 100%; height: auto; display: block; }
     radial-gradient(720px 360px at 10% 0%, rgba(246, 201, 87, 0.18), transparent 64%),
     var(--paper-warm);
 }
+.branch-page .branch-hero {
+  min-height: 720px;
+  height: auto;
+}
+.branch-page .branch-hero .hero__grid--single {
+  min-height: 620px;
+}
+.branch-page--hang-hau .branch-hero__ambient--hang-hau::before {
+  background-image: url("../assets/v2/new-shops.jpg?v=claude-v7-20260610");
+  background-position: center;
+  filter: saturate(1.03) contrast(1.02) brightness(0.92);
+}
+.branch-local {
+  background:
+    radial-gradient(700px 340px at 90% 10%, rgba(41, 166, 255, 0.13), transparent 62%),
+    var(--paper);
+}
+.branch-local__grid {
+  display: grid;
+  gap: 24px;
+}
+.branch-local__panel p {
+  margin: 0 0 22px;
+  color: var(--ink-soft);
+}
+.branch-local .branch-card h2 {
+  margin: 0 0 14px;
+  font-family: var(--serif);
+  font-size: clamp(24px, 3.6vw, 32px);
+  line-height: 1.25;
+}
+
+@media (min-width: 880px) {
+  .branch-local__grid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 700px) {
+  .branch-page .branch-hero {
+    min-height: 640px;
+  }
+  .branch-page .branch-hero .hero__grid--single {
+    min-height: 540px;
+  }
+}
+.branch-card__hours {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
 .geo-layout {
   position: relative;
   z-index: 1;
